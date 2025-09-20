@@ -8,9 +8,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-import {BACKGROUNDIMAGE,HEROLOGO } from "@/constants"
+import { BACKGROUNDIMAGE, HEROLOGO } from "@/constants";
+import { useRouter } from "expo-router";
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
@@ -34,20 +37,26 @@ export default function Index() {
 
             {/* ✅ Footer */}
             <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
-              {/* Button Group */}
+              {/* 🔹 Button Group */}
               <View style={styles.buttonGroup}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => router.push("/join")}
+                >
                   <Text style={{ ...styles.textSmall, color: "black" }}>
                     Join here
                   </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.transparentButton}>
+                <TouchableOpacity
+                  style={styles.transparentButton}
+                  onPress={() => router.push("/signin")}
+                >
                   <Text style={styles.textSmall}>Sign In</Text>
                 </TouchableOpacity>
               </View>
 
-              {/* Navigation Prompt */}
+              {/* 🔹 Navigation Prompt */}
               <View style={{ alignItems: "center", paddingVertical: 20 }}>
                 <Text style={{ color: "white" }}>Continue to home</Text>
               </View>
