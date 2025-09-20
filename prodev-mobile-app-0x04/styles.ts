@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: 15,
   },
   largeText: {
     fontWeight: "700",
@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   formGroup: {
-    marginTop: 44,
-    gap: 10,
+    marginTop: 30,
+    gap: 5,
   },
   placeholderText: {
     fontSize: 18,
@@ -83,8 +83,7 @@ export const styles = StyleSheet.create({
     color: "#C2C2C2",
   },
   socialMediaButtonGroup: {
-    gap: 15,
-    marginTop: 15,
+    gap: 10,
   },
   socialMediaButton: {
     height: 53,
@@ -107,11 +106,11 @@ export const styles = StyleSheet.create({
     bottom: 33,
   },
   subText: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "400",
   },
   subTextJoin: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "600",
     color: "#FFA800",
   },

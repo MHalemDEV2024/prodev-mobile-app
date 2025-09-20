@@ -7,63 +7,65 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { BACKGROUNDIMAGE, HEROLOGO } from "@/constants";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   const router = useRouter();
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ImageBackground
-          source={BACKGROUNDIMAGE}
-          style={styles.background}
-          resizeMode="cover"
-        >
-          <View style={styles.container}>
-            {/* ✅ Company Logo */}
-            <View style={styles.companyLogo}>
-              <Image source={HEROLOGO} />
+      {/* ✅ Make the status bar transparent */}
+      <StatusBar style="light" translucent backgroundColor="transparent" />
+
+      <ImageBackground
+        source={BACKGROUNDIMAGE}
+        style={styles.background}
+        resizeMode="cover"
+      >
+        <View style={styles.container}>
+          {/* ✅ Company Logo */}
+          <View style={styles.companyLogo}>
+            <Image source={HEROLOGO} />
+          </View>
+
+          {/* ✅ Text Group */}
+          <View style={styles.textGroup}>
+            <Text style={styles.textLarge}>Find your favorite place here</Text>
+            <Text style={styles.textSmall}>The best prices for over 2 </Text>
+            <Text style={styles.textSmall}>million properties worldwide</Text>
+          </View>
+
+          {/* ✅ Footer */}
+          <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
+            {/* 🔹 Button Group */}
+            <View style={styles.buttonGroup}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => router.push("/join")}
+              >
+                <Text style={{ ...styles.textSmall, color: "black" }}>
+                  Join here
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.transparentButton}
+                onPress={() => router.push("/signin")}
+              >
+                <Text style={styles.textSmall}>Sign In</Text>
+              </TouchableOpacity>
             </View>
 
-            {/* ✅ Text Group */}
-            <View style={styles.textGroup}>
-              <Text style={styles.textLarge}>Find your favorite place here</Text>
-              <Text style={styles.textSmall}>The best prices for over 2 </Text>
-              <Text style={styles.textSmall}>million properties worldwide</Text>
-            </View>
-
-            {/* ✅ Footer */}
-            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
-              {/* 🔹 Button Group */}
-              <View style={styles.buttonGroup}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => router.push("/join")}
-                >
-                  <Text style={{ ...styles.textSmall, color: "black" }}>
-                    Join here
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.transparentButton}
-                  onPress={() => router.push("/signin")}
-                >
-                  <Text style={styles.textSmall}>Sign In</Text>
-                </TouchableOpacity>
-              </View>
-
-              {/* 🔹 Navigation Prompt */}
-              <View style={{ alignItems: "center", paddingVertical: 20 }}>
-                <Text style={{ color: "white" }}>Continue to home</Text>
-              </View>
+            {/* 🔹 Navigation Prompt */}
+            <View style={{ alignItems: "center", paddingVertical: 20 }}>
+              <Text style={{ color: "white" }}>Continue to home</Text>
             </View>
           </View>
-        </ImageBackground>
-      </SafeAreaView>
+        </View>
+      </ImageBackground>
     </SafeAreaProvider>
   );
 }
@@ -74,7 +76,6 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    justifyContent: "center",
     width: "100%",
     height: Dimensions.get("window").height,
   },
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     padding: 20,
+    marginTop: 60, // ✅ Pushes logo below status bar safely
     marginBottom: 50,
   },
   textGroup: {
@@ -105,9 +107,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 40,
     paddingVertical: 15,
-    paddingHorizontal: 5,
     alignItems: "center",
-    fontSize: 20,
     flex: 1,
   },
   button: {
@@ -115,9 +115,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 40,
     paddingVertical: 15,
-    paddingHorizontal: 5,
     alignItems: "center",
-    fontSize: 20,
     backgroundColor: "white",
     flex: 1,
   },
